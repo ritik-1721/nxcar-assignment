@@ -39,7 +39,7 @@ export default function CarCard({ car }: CarCardProps) {
         }
         <button
           // onClick={handleCopy}
-          className="absolute top-3 right-3 w-9 h-9 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 backdrop-blur-md bg-white/20 border border-white/40 hover:bg-white/30 shadow-lg"
+          className="absolute top-1 right-1 w-9 h-9 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 backdrop-blur-md bg-white/20 border border-white/40 hover:bg-white/30 shadow-lg"
           aria-label="Copy car details"
           title="Copy car details"
         >
@@ -49,19 +49,25 @@ export default function CarCard({ car }: CarCardProps) {
 
       {/* Content Container */}
 
-      <div className="p-4">
+      <div className="p-2">
+        
+        <div className="flex justify-between">
+          <p className=" font-semibold text-[#4A4A4A] text-lg line-clamp-1 max-w-[250px] my-0">{`${car.year}  ${car.make} ${car.model} ${car.variant}`}</p>
+          <Heart className="text-teal-600" />
+        </div>
+        
+        <p className="text-[#4A4A4C] text-sm" >{`${car.mileage} KM | ${car.fuel_type} | ${car.transmission}`}</p>
 
-        <h3 className="text-foreground font-semibold text-sm mb-2 line-clamp-2">{`${car.year}  ${car.make} ${car.model} ${car.variant}`}</h3>
-        <p>{`${car.mileage} | ${car.fuel_type} | ${car.transmission}`}</p>
-        <div className="flex ">
-          <p className="text-foreground font-bold text-lg">
+        <div className="flex justify-between">
+          <p className="text-[#4A4A4A] font-semibold text-base">
             ₹{formatMoney(car.price)}
           </p>
-          <p className="text-muted-foreground text-xs">
-            EMI at ₹{formatMoney(car.emi || 23432)}
+          <p className="text-[#4A4A4A] text-base">
+            <span className="text-[#4A4A4C] text-sm">EMI at </span> <span className="font-semibold"> ₹{formatMoney(car.emi || 23432)}</span>
           </p>
         </div>
-        <div className="flex items-center justify-between bg-gradient-to-r from-teal-500 to-teal-400 rounded-lg px-4 py-2">
+
+        <div className="flex items-center justify-between bg-gradient-to-r from-teal-500 to-teal-400 rounded-lg px-4 py-2 mt-2">
           <span className="text-white text-sm font-semibold">
             {car.dealer || car.seller_name}
           </span>
